@@ -1,0 +1,57 @@
+{
+  "name": "action-template",
+  "description": "A template for building and releasing GitHub Actions",
+  "version": "0.0.0",
+  "author": "Jonathan Clem <jonathan@jclem.net>",
+  "bugs": {
+    "url": "https://github.com/jclem/action-template/issues"
+  },
+  "dependencies": {
+    "@actions/artifact": "^0.4.0",
+    "@actions/cache": "^1.0.2",
+    "@actions/core": "^1.2.6",
+    "@actions/exec": "^1.0.4",
+    "@actions/github": "^4.0.0",
+    "@actions/glob": "^0.1.0",
+    "@actions/io": "^1.0.2",
+    "@actions/tool-cache": "^1.6.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.2.0",
+    "@typescript-eslint/parser": "^4.2.0",
+    "@vercel/ncc": "^0.24.1",
+    "eslint": "^7.9.0",
+    "eslint-config-prettier": "^6.11.0",
+    "husky": "^4.3.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.1.2",
+    "typescript": "^4.0.3"
+  },
+  "homepage": "https://github.com/jclem/action-template#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run check"
+    }
+  },
+  "keywords": [
+    "actions",
+    "github",
+    "template"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jclem/action-template.git"
+  },
+  "scripts": {
+    "build": "ncc build src/index.ts",
+    "check": "run-p --aggregate-output --continue-on-error check:format check:lint check:types",
+    "check:format": "prettier src/* --check",
+    "check:format:write": "npm run check:format -- --write",
+    "check:lint": "eslint src",
+    "check:types": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

@@ -1,0 +1,8 @@
+name: Action Template
+author: Jonathan Clem <jonathan@jclem.net>
+description: A template for building and releasing GitHub Actions
+inputs: {}
+outputs: {}
+runs:
+  using: node12
+  main: dist/index.js
