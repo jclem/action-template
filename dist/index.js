@@ -417,7 +417,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__webpack_require__(186));
-core.info('Test');
+core.info('Test 2');
 
 
 /***/ }),
