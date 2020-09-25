@@ -3,9 +3,6 @@ name: Release
 on:
   workflow_dispatch:
     inputs:
-      commit:
-        description: The commit SHA to release from
-        required: true
       version:
         description: Version upgrade type
         required: true
@@ -17,8 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.inputs.commit }}
       - uses: actions/setup-node@v1
         with: {node-version: '12'}
       - name: Create release
@@ -41,8 +36,9 @@ jobs:
 
           git fetch origin release
           git checkout release
-          git diff HEAD..main 'package*' | git apply
-          git add package*
+          git diff HEAD..main 'package*'
+          npm run build
+          git add --all
           git commit -m "Release from https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
           git push origin release
 
