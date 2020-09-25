@@ -36,9 +36,8 @@ jobs:
 
           git fetch origin release
           git checkout release
-          git diff HEAD..main 'package*'
-          npm run build
-          git add --all
+          git diff HEAD..main 'package*' | git apply
+          git add package*
           git commit -m "Release from https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
           git push origin release
 
