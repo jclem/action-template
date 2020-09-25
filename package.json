@@ -1,7 +1,7 @@
 {
   "name": "action-template",
   "description": "A template for building and releasing GitHub Actions",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": "Jonathan Clem <jonathan@jclem.net>",
   "bugs": {
     "url": "https://github.com/jclem/action-template/issues"
