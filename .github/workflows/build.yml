@@ -24,11 +24,16 @@ jobs:
           GIT_COMMITTER_NAME: github-actions
           GIT_COMMITTER_EMAIL: github-actions@github.com
         run: |
+          build_source=$(git rev-parse HEAD)
           git fetch origin release
           git checkout release
-          build_source=$(git rev-parse HEAD)
           git diff HEAD..main ':^.gitignore' ':^dist' | git apply
           npm run build
           git add --all
-          git commit -m "Build from $build_source\n\nThis build was generated in this workflow run:\nhttps://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+
+          git commit -m "Build from $build_source
+
+          This build was generated in this workflow run:
+          https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+
           git push origin release
