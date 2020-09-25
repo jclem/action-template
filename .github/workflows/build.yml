@@ -26,8 +26,7 @@ jobs:
         run: |
           git fetch origin release
           git checkout release
-          patch=$(git diff HEAD..main ':(exclude).gitignore' ':(exclude)dist')
-          git apply $patch
+          git diff HEAD..main ':^.gitignore' ':^dist' | git apply
           npm run build
           git add --all
           git commit -m "Build from https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
