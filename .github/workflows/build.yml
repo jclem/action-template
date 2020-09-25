@@ -26,8 +26,7 @@ jobs:
         run: |
           git fetch origin release
           git checkout release
-          changed_files=$(git diff --name-only main..HEAD | grep -v '^.gitignore$' | grep -v '^dist/')
-          git checkout main -- $changed_files
+          git diff HEAD..main ':^.gitignore' ':^dist' | git apply
           npm run build
           git add --all
           git commit -m "Build from https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
