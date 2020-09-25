@@ -1,3 +1,3 @@
 import * as core from '@actions/core'
 
-core.info('Test 2')
+core.info('Test')
